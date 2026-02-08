@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS Lite Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">Internal HR Tool</p>
+          <h1>HRMS Lite Admin Console</h1>
+          <p class="subtitle">
+            Manage employee records and track attendance in one streamlined workspace.
+          </p>
+        </div>
+        <div class="status-pill" id="api-status">Checking API...</div>
+      </header>
+
+      <main>
+        <section class="card" aria-labelledby="employee-management-title">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Employee Management</p>
+              <h2 id="employee-management-title">Employee Directory</h2>
+            </div>
+          </div>
+          <div class="card-grid">
+            <form class="form" id="employee-form">
+              <h3>Add Employee</h3>
+              <label>
+                Employee ID
+                <input type="text" name="id" placeholder="EMP-001" required />
+              </label>
+              <label>
+                Full Name
+                <input type="text" name="fullName" placeholder="Jane Doe" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" name="email" placeholder="jane@company.com" required />
+              </label>
+              <label>
+                Department
+                <input type="text" name="department" placeholder="People Ops" required />
+              </label>
+              <button type="submit" class="primary">Add Employee</button>
+              <div class="form-message" id="employee-form-message"></div>
+            </form>
+
+            <div class="list-panel">
+              <div class="list-header">
+                <h3>Current Employees</h3>
+                <span class="badge" id="employee-count">0</span>
+              </div>
+              <div class="list-body" id="employee-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="attendance-title">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Attendance Management</p>
+              <h2 id="attendance-title">Daily Attendance</h2>
+            </div>
+          </div>
+          <div class="card-grid">
+            <form class="form" id="attendance-form">
+              <h3>Mark Attendance</h3>
+              <label>
+                Employee ID
+                <input type="text" name="employeeId" placeholder="EMP-001" required />
+              </label>
+              <label>
+                Date
+                <input type="date" name="date" required />
+              </label>
+              <label>
+                Status
+                <select name="status" required>
+                  <option value="">Select status</option>
+                  <option value="Present">Present</option>
+                  <option value="Absent">Absent</option>
+                </select>
+              </label>
+              <button type="submit" class="primary">Save Attendance</button>
+              <div class="form-message" id="attendance-form-message"></div>
+            </form>
+
+            <div class="list-panel">
+              <div class="list-header">
+                <div>
+                  <h3>Attendance Records</h3>
+                  <p class="muted">Search by employee to view daily entries.</p>
+                </div>
+              </div>
+              <div class="filter-row">
+                <input
+                  type="text"
+                  id="attendance-filter"
+                  placeholder="Enter Employee ID to view records"
+                />
+                <button class="secondary" id="attendance-filter-btn">Load</button>
+              </div>
+              <div class="list-body" id="attendance-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
